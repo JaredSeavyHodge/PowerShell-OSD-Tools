@@ -5,10 +5,10 @@
     Simple script to download and extract this module to a temporary location and import it.
     .NOTES
     You can use iex (Invoke-Expression) with irm (Invoke-RestMethod) to run this script directly from GitHub:
-    Powershell.exe -executionpolicy bypass 'iex (irm https://raw.githubusercontent.com/JaredSeavyHodge/PowerShell-OSD-Tools/Main/PowerShell-OSD-Tools/Import-TempModule.ps1)'
+    Powershell.exe -executionpolicy bypass 'iex (irm https://raw.githubusercontent.com/JaredSeavyHodge/PowerShell-OSD-Tools/main/PowerShell-OSD-Tools/Import-TempModule.ps1)'
 #>
 
-$ModuleUri = 'https://github.com/JaredSeavyHodge/PowerShell-OSD-Tools/archive/refs/heads/Main.zip'
+$ModuleUri = 'https://codeload.github.com/JaredSeavyHodge/PowerShell-OSD-Tools/zip/refs/heads/main'
 
 Invoke-WebRequest -Uri $ModuleUri -OutFile "$env:TEMP\PowerShell-OSD-Tools.zip"
 
