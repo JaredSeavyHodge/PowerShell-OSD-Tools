@@ -46,9 +46,13 @@ function Start-AutopilotImport {
                 | Select-Object -ExpandProperty DeviceHardwareData 
             $base64 = [System.Convert]::FromBase64String($hash)
         }
-        catch {
-            Throw "Encountered an error while getting the device's serial number and/or hash. (Error Message: $($_.Exception.Message))"
+        catch [Microsoft.Management.Infrastructure.CimException] {
+            Throw "Not able to retrieve Hardware Hash from this device. (Error Message: $($_.Exception.Message))"
         }
+        catch {
+            Throw "Encountered an unhandled error while getting the device's serial number and/or hash. (Error Message: $($_.Exception.Message))"
+        }
+        
         if ( !$Hash -or !$Serial ) {
             Throw "Unable to get the device's serial number and/or hash. (Error Message: $($_.Exception.Message))"
         }
