@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PowerShell: Module Interactive Session",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Import-Module -Force ${workspaceFolder}/Powershell-OSD-Tools/PowerShell-OSD-Tools.psd1"
+        },
+        {
+            "name": "Invoke-Gui",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Import-Module -Force ${workspaceFolder}/Powershell-OSD-Tools/PowerShell-OSD-Tools.psd1;Invoke-Gui",
+            "cwd": "${cwd}"
+        },
+        {
+            "name": "Start-OsdPhase",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Import-Module -Force ${workspaceFolder}/Powershell-OSD-Tools/PowerShell-OSD-Tools.psd1;Start-OsdPhase",
+            "cwd": "${cwd}"
+        },
+        {
+            "name": "Test Script",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Import-Module -Force ${workspaceFolder}/Powershell-OSD-Tools/PowerShell-OSD-Tools.psd1;${workspaceFolder}/Test/Test.ps1",
+            "cwd": "${cwd}"
+        },
+    ]
+}

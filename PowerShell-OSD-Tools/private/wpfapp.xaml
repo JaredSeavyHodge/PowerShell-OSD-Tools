@@ -1,0 +1,173 @@
+<Window 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+    Title="Autopilot Enroller"
+    Height="720" 
+    Width="575"
+    MinWidth="575"
+    MinHeight="720"
+    Background="#333"
+    Foreground="WhiteSmoke"
+    WindowStyle="None"
+    FontFamily="Montserrat Medium"
+    FontSize="12"
+    ResizeMode="CanResizeWithGrip"
+    WindowStartupLocation="CenterScreen"
+    >
+    <WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0" ResizeBorderThickness="5" GlassFrameThickness="5"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <SolidColorBrush x:Key="HCCBlue" Color="#001e60" />
+        <SolidColorBrush x:Key="HCCTeal" Color="#06375A" />
+        <SolidColorBrush x:Key="DMBlue" Color="#306090" />
+        <SolidColorBrush x:Key="HCCAzure" Color="#45A4DB" />
+        <SolidColorBrush x:Key="FLBlue" Color="#00ADCD" />
+        <SolidColorBrush x:Key="HCCGray" Color="#e6e6e6" />
+        <SolidColorBrush x:Key="HCCGreen" Color="#05B36C" />
+        <SolidColorBrush x:Key="HCCRed" Color="#E8246B" />
+        <SolidColorBrush x:Key="HCCGold" Color="#DEB408" />
+        <SolidColorBrush x:Key="HCCYellow" Color="#F7EC22" />
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0,0" />
+            <Setter Property="Padding" Value="0,5" />
+            <Setter Property="Foreground" Value="{StaticResource HCCAzure}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5,5" />
+            <Setter Property="Padding" Value="5,5" />
+            <Setter Property="Background" Value="#444" />
+            <Setter Property="Foreground" Value="WhiteSmoke" />
+            <Setter Property="Width" Value="120" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{StaticResource HCCYellow}" />
+            <Setter Property="Padding" Value="5,5" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Width" Value="Auto" />
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="5,10" />
+            <Setter Property="Foreground" Value="{StaticResource HCCAzure}" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{StaticResource HCCYellow}" />
+            <Setter Property="Padding" Value="5,5" />
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" Name="Title" Background="#666" Height="40">
+                <TextBlock Margin="10" FontSize="17" Foreground="{StaticResource HCCAzure}" VerticalAlignment="Center" Name="AppTitle" FontFamily="Montserrat ExtraBold"/>
+                <Button Width="30" Height="30" HorizontalAlignment="Right" Foreground="WhiteSmoke" Background="{StaticResource HCCRed}" BorderBrush="{x:Null}" FontFamily="Segoe MDL2 Assets" Content="&#xE711;" Name="CloseButton" />
+        </DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- Computer Info -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Name="ComputerNameLabel" />
+                    <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="ComputerNameInfo" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Name="SerialLabel" />
+                    <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="SerialInfo" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Name="OSLabel" />
+                    <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="OS" />
+                    <TextBlock Grid.Row="3" Grid.Column="0" Name="BuildLabel" />
+                    <TextBox Grid.Row="3" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="BuildInfo" />
+                    <TextBlock Grid.Row="4" Grid.Column="0" Name="VersionLabel" />
+                    <TextBox Grid.Row="4" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="VersionInfo" />
+                    <TextBlock Grid.Row="5" Grid.Column="0" Name="LastBootUpTimeLabel" />
+                    <TextBox Grid.Row="5" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="LastBootUpTimeInfo" />
+                    <TextBlock Grid.Row="6" Grid.Column="0" Name="InstallDateLabel" />
+                    <TextBox Grid.Row="6" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="InstallDateInfo" />
+                    <TextBlock Grid.Row="7" Grid.Column="0" Name="AutopilotRegisteredLabel" />
+                    <TextBox Grid.Row="7" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Name="AutopilotRegisteredInfo" />
+
+                    <!-- Repeat for the rest of the information -->
+                </Grid>
+                <Ellipse Grid.Column="1"  Width="130" Height="130">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="LogoImage"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Grid>
+
+            <Border Grid.Row="1" BorderBrush="{StaticResource HCCAzure}" BorderThickness="2" Margin="15,0,15,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Margin="10" Orientation="Horizontal">
+                        <Button Background="{StaticResource FLBlue}" Name="RebootButton" Content="Reboot"  />
+                        <Button Background="{StaticResource FLBlue}" Name="RenameButton" Content="Rename" />
+                        <Button Background="{StaticResource FLBlue}" Name="SettingsButton" Content="Settings"  />
+                        <Button Background="{StaticResource FLBlue}" Name="EdgeButton" Content="Edge"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="10" Orientation="Horizontal">
+                        <Button Background="{StaticResource FLBlue}" Name="UpdateWindowsButton" Content="Update Windows"  />
+                        <Button Background="{StaticResource FLBlue}" Name="UpdateDriversButton" Content="Update Drivers"  />
+                        <Button Background="{StaticResource FLBlue}" Name="PrintManagementButton" Content="Print Mgmt" />
+                        <Button Background="{StaticResource FLBlue}" Name="RsatButton" Content="RSAT"  />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border BorderBrush="{StaticResource HCCAzure}" BorderThickness="2" Grid.Row="2" Margin="15" Padding="15">
+                <StackPanel Name="AutopilotSection">
+                    <Label Content="Autopilot Enrollment"  Foreground="{StaticResource HCCYellow}" FontSize="15" FontFamily="Montserrat Bold" HorizontalAlignment="Center" />
+                    <Label Content="Computer Name:" />
+                    <TextBox Foreground="#333" Height="30" Name="ComputerBox" />
+                    <Label Content="Select Group:" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Foreground="#333" Height="30" Grid.Column="0"  Name="GroupBox"/>
+                        <Button Grid.Column="1" Name="GroupButton" Content="Search" Background="{StaticResource HCCGreen}"/>
+                    </Grid>
+                    <Grid Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Row="0" Grid.Column="0" Name="UpdateWindowsCheck" Content="Update Windows" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <CheckBox Grid.Row="0" Grid.Column="1" Name="PrintManagementCheck" Content="Print Management" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <CheckBox Grid.Row="1" Grid.Column="0" Name="UpdateDriversCheck" Content="Update Drivers" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <CheckBox Grid.Row="1" Grid.Column="1" Name="RebootCheck" Content="Reboot" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Button   Grid.Row="1" Grid.Column="2" Name="EnrollButton" Content="Start" Background="{StaticResource HCCRed}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                     </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
