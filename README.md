@@ -11,4 +11,5 @@ Features:
 -  Open Windows settings
 -  Install RSAT
 
-![image](https://github.com/JaredSeavyHodge/PowerShell-OSD-Tools/assets/17116881/2166d743-7bb0-4554-9c15-d36129608589)
+![app (Small)](https://github.com/JaredSeavyHodge/PowerShell-OSD-Tools/assets/17116881/103ada8f-5f39-4375-9e10-721c0a4a42fc)
+
