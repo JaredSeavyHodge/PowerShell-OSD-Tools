@@ -1,4 +1,4 @@
-# PowerShell OSD Tools WPF App
+# PowerShell OSD Tools with WPF GUI
 ### Uses Microsoft.Graph.Authentication module to register devices with Windows Autopilot
 
 I created this tool primarily for single device deployment during the Windows Out of Box Experience. It does not rely on the deprecated module Microsoft.Graph.Intune, or the Get-WindowsAutopilotInfo script from the PSGallery.  Microsoft.Graph.Authentication is the only dependent module, which contains Invoke-MgGraphRequest to accomplish the import.
