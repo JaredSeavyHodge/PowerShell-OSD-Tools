@@ -1,13 +1,13 @@
 # PowerShell OSD Tools with WPF GUI
 ### Uses Microsoft.Graph.Authentication module to register devices with Windows Autopilot
 
-I created this tool primarily for single device deployment during the Windows Out of Box Experience. It does not rely on the deprecated module Microsoft.Graph.Intune, or the Get-WindowsAutopilotInfo script from the PSGallery.  Microsoft.Graph.Authentication is the only dependent module, which contains Invoke-MgGraphRequest to accomplish the import.
+I created this tool primarily for single device deployment during the Windows Out of Box Experience. It does not rely on the Microsoft.Graph.Intune module, or the script created by Microsoft (Michael Niehaus) Get-WindowsAutopilotInfo.  Microsoft.Graph.Authentication is the only dependent module, which contains the cmdlet Invoke-MgGraphRequest to accomplish the import. The functions handling this can be found in the GraphHelpers.ps1 file.
 
 The logic used is heavily inspired by Michael Niehaus' script (Get-WindowsAutopilotInfo), however is designed to use the latest Graph module and is only to be used on the local device it's executed from.
 
 The entry cmdlet 'Start-OSDPhase' contains some code borrowed from David Segura who is a developer of OSD Cloud.  If you haven't heard of him, check him out.  I'm using his method of detecting the current 'phase' of the computer (i.e. OOBE, Windows, WinPE).  This is here for future development, however can be used to execute any chain of processes you'd like.
 
-This app is still in development, subject to change, and I am not responsible for any unintended consequence.  With that said, this tool has been working as intended in my environment. 
+This app is still in development, subject to change, and I am not responsible for any unintended consequence.  With that said, this tool has been working as intended in my environment. This was also created quickly and likely has notable room for refactoring and improvements.
 
 ## Features
 -  Register device in Windows Autopilot and add to Azure group.
