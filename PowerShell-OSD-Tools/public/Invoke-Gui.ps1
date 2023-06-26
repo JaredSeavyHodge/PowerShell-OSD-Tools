@@ -51,9 +51,9 @@ function Invoke-Gui
         # Edge Button
         $contextMenu = New-Object System.Windows.Controls.ContextMenu
         $contextMenu.Items.Add((New-Object System.Windows.Controls.MenuItem -Property @{
-            Header = "TDX"; 
+            Header = "Google"; 
             Add_Click = {
-                Start-AutoProcess -TDX
+                Start-AutoProcess -Google
             }})) | Out-Null
         $contextMenu.Items.Add((New-Object System.Windows.Controls.MenuItem -Property @{
             Header = "Intune"; 

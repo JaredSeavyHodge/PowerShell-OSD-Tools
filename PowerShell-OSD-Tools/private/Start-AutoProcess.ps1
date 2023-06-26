@@ -9,7 +9,7 @@ function Start-AutoProcess
         [Parameter()][switch]$RegisterAutopilot,
         [Parameter()][switch]$RSAT,
         [Parameter()][switch]$PrintManagement,
-        [Parameter()][switch]$TDX,
+        [Parameter()][switch]$Google,
         [Parameter()][switch]$Intune,
         [Parameter()][switch]$Settings,
         [Parameter()][switch]$Reboot
@@ -23,7 +23,7 @@ function Start-AutoProcess
         Start-Process "C:\Windows\System32\gpedit.msc" -ErrorAction SilentlyContinue
     }
 
-    if($TDX) {Start-Process -FilePath "msedge" -ArgumentList "hccfl.teamdynamix.com"}
+    if($Google) {Start-Process -FilePath "msedge" -ArgumentList "www.google.com"}
     
     if($Intune) {Start-Process -FilePath "msedge" -ArgumentList "endpoint.microsoft.com", "--inprivate"}
 
