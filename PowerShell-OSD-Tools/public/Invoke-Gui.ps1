@@ -1,10 +1,10 @@
 function Invoke-Gui
 {
-        <#
-    .SYNOPSIS
-        Starts the GUI for HCC OSD Toolkit
-    .DESCRIPTION
-        This GUI is used to provide a user-friendly interface the autopilot process and other OSD tasks.
+    <#
+        .SYNOPSIS
+            Starts the GUI for PowerShell OSD Tool
+        .DESCRIPTION
+            This GUI is used to provide a user-friendly interface to register a device into Autopilot and other OSD tasks.
     #>
 
     Begin
@@ -13,30 +13,29 @@ function Invoke-Gui
         # Add presentation framework assemblies
         Add-Type -AssemblyName PresentationFramework
         Add-Type -AssemblyName Microsoft.VisualBasic
-
-        # Configuration setup
-        $ConfigPath = "$PSScriptRoot\..\config\"
-        $ConfigJson = Get-Content -Path "$ConfigPath\config.json" | ConvertFrom-Json
-        $TitleText = $ConfigJson.Title
-        $GroupPrefix = $ConfigJson.GroupPrefix
-        $LogoPath = Join-Path $ConfigPath $ConfigJson.Logo
-
+        
         # Create Window
         [xml]$xaml = Get-Content "$PSScriptRoot\..\Private\wpfapp.xaml"
         $reader = (New-Object System.Xml.XmlNodeReader $xaml)
         $Window = [Windows.Markup.XamlReader]::Load($reader)
         $xaml.SelectNodes("//*[@Name]") | ForEach-Object {Set-Variable -Name ($_.Name) -Value $Window.FindName($_.Name) -Scope Script}
         
+        # Configuration setup
+        $ConfigPath = "$PSScriptRoot\..\config\"
+        $ConfigJson = Get-Content -Path "$ConfigPath\config.json" | ConvertFrom-Json
+        $TitleText = $ConfigJson.Title
+        $GroupPrefix = $ConfigJson.GroupPrefix
+        $LogoPath = Join-Path $ConfigPath $ConfigJson.Logo
         if ($ConfigJson.Logo) {
             $LogoImage = $Window.FindName("LogoImage")
             $LogoImage.ImageSource = $LogoPath
         }
         $AppTitle.Text = $TitleText
         
-        # Script variable
-        $Script:GroupForDevice
+        # Script variables
+        $Script:GroupForDevice # Azure AD Group that the device will be added to when registered.
     
-        # Add Event Handlers
+        # Event Handlers
         $Title.Add_MouseDown({
             if ($_.ChangedButton -eq [System.Windows.Input.MouseButton]::Left) {
                 $Window.DragMove()
@@ -76,9 +75,6 @@ function Invoke-Gui
             }
         })
         $GroupButton.Add_Click({
-            # $Group = Get-AzureADGroup -SearchString "ENDPOINT Devices" -All $true | Out-GridView -OutputMode Single -Title "Select the Group"
-            # $Group = Get-MgGroup -Filter "startswith(displayName,'ENDPOINT Devices')" -All | Out-GridView -OutputMode Single -Title "Select the Group"
-            
             if ($GroupPrefix) {
                 $Script:GroupForDevice = Get-AzureADGroupByPrompt -Prefix "ENDPOINT Devices"
             }

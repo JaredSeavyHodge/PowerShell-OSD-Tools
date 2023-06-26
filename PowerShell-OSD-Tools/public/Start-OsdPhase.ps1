@@ -4,7 +4,6 @@ function Start-OsdPhase {
         This script is designed to be run from WinPE, Audit Mode, or OOBE utilizing David Sefura's Window's phase logic.  It will determine the Windows phase and run the appropriate functions.
     #>
 
-    #region Initialize
     $Transcript = "$((Get-Date).ToString('yyyy-MM-dd-HHmmss'))-OSDCloud.log"
     $null = Start-Transcript -Path (Join-Path "$env:SystemRoot\Temp" $Transcript) -ErrorAction Ignore
 
@@ -24,9 +23,9 @@ function Start-OsdPhase {
     }   
 
     $Scopes = @(
-        "Group.ReadWrite.All" # Required for adding the device to a group
-        "Device.Read.All" # Required for getting the device's serial number and hash
-        "DeviceManagementServiceConfig.ReadWrite.All" # Required for importing devices
+        "Group.ReadWrite.All"
+        "Device.Read.All"
+        "DeviceManagementServiceConfig.ReadWrite.All" # Required import the device into Windows Autopilot
     )
     
 
@@ -41,7 +40,6 @@ function Start-OsdPhase {
     }
 
     Write-Host -ForegroundColor DarkGray "Phase: $WindowsPhase"
-    #endregion
 
     switch ($WindowsPhase) {
         'WinPE'

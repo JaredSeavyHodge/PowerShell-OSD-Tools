@@ -33,8 +33,6 @@ function Start-AutoProcess
     {   
         if($RegisterAutopilot)
         {
-            # Modified Get-WindowsAutopilotInfo in this module.
-            # Get-WindowsAutoPilotInfoMod -Online -AddToGroup $GroupName
             Start-AutopilotImport -GroupId $GroupId
             $isRegistered = $true
         }
@@ -50,12 +48,10 @@ function Start-AutoProcess
 
     if($isRegistered)
     {
-        #Get-WindowsAutoPilotInfoMod -AssignThisDeviceOnly
         Wait-AutopilotProfileAssignment
     }
     elseif ($RegisterAutopilot)
     {
-        #Get-WindowsAutoPilotInfoMod -Online -Assign -AddToGroup $GroupName
         Start-AutopilotImport -GroupId $GroupId -WaitForProfile
     }
 
