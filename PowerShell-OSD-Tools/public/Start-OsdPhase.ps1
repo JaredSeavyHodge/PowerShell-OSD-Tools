@@ -60,7 +60,6 @@ function Start-OsdPhase {
         'OOBE'
         {
             try {
-                Select-MgProfile -Name beta
                 Connect-MgGraph -Scopes $Scopes
             }
             catch {
@@ -73,7 +72,6 @@ function Start-OsdPhase {
         'Windows'
         {
             try {
-                Select-MgProfile -Name beta
                 Connect-MgGraph -Scopes $Scopes
             }
             catch {
