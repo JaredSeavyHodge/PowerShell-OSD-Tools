@@ -28,11 +28,10 @@ function Start-AutopilotImport {
     }
 
     $Scopes = @(
-        "Group.ReadWrite.All" # Required for adding the device to a group
-        "Device.Read.All" # Required for getting the device's serial number and hash
-        "DeviceManagementServiceConfig.ReadWrite.All" # Required for importing devices
+        "Group.ReadWrite.All"
+        "Device.Read.All"
+        "DeviceManagementServiceConfig.ReadWrite.All"
     )
-    Select-MgProfile -Name beta
     Connect-MgGraph -Scopes $Scopes
 
     try {
@@ -57,8 +56,7 @@ function Start-AutopilotImport {
             Throw "Unable to get the device's serial number and/or hash. (Error Message: $($_.Exception.Message))"
         }
     
-        # Required Scope DeviceManagementServiceConfig.ReadWrite.All
-        
+        # Begin the import
         $Import = New-ImportedAutopilotMgDevice -SerialNumber $Serial -ProductKey $Serial -HardwareIdentifier $base64 -ErrorAction Stop
 
         # This loop will wait up to 5 minutes for the import to complete.
@@ -108,7 +106,6 @@ function Start-AutopilotImport {
 
         # Add to group
         try {
-            #Add-DeviceToMgGroup -GroupName $GroupName -AzureADDeviceId $AutopilotDevice.AzureActiveDirectoryDeviceId
             $AzureObject = Get-AzureAdMgDeviceByAzureAdDeviceId -AzureAdDeviceId $AutopilotDevice.AzureActiveDirectoryDeviceId -ErrorAction Stop
             Add-MgDeviceToAzureADGroup -DeviceId $AzureObject.id -GroupId $GroupId -ErrorAction Stop
             Write-Host -ForegroundColor Green "Device added to group ($($Script:GroupForDevice.DisplayName))."
