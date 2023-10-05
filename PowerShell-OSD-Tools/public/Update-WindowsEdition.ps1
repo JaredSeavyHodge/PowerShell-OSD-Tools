@@ -50,8 +50,10 @@ Function Update-WindowsEdition {
         $Edition = Get-WindowsEdition -online
 
         if ($Edition.Edition -eq "Core" -OR $Edition.Edition -eq "Home") {
-            Write-Warning "The Windows edition must be upgraded to support AutoPilot. `n `
-            After the upgrade, the computer will reboot and you must run this script again."
+            Write-Warning "AutoPilot is not supported on Home/Core`n
+            The Windows edition must be upgraded to support AutoPilot. `
+            Once the upgrade is complete, reboot before enrolling into AutoPilot."
+            
             $DoUpgrade = Read-Host -Prompt "Do you want to upgrade the Windows edition to $To now? (Y/N)"
             if( $DoUpgrade.ToLower() -eq "y" ) {
                 $Proc = Start-Process changepk.exe -ArgumentList "/ProductKey $($KMSKeys.$To)" -PassThru
