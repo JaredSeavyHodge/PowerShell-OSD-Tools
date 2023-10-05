@@ -65,7 +65,11 @@ function Start-OsdPhase {
             catch {
                 Write-Host -ForegroundColor Magenta "Error during AzureAD authentication."
             }
+
+            Update-WindowsEdition -To Education
+
             Invoke-Gui
+
             $null = Stop-Transcript -ErrorAction Ignore
         }
 
@@ -77,7 +81,9 @@ function Start-OsdPhase {
             catch {
                 Write-Host -ForegroundColor Magenta "Error during AzureAD authentication."
             }
+
             Invoke-Gui
+            
             $null = Stop-Transcript -ErrorAction Ignore
         }
 
